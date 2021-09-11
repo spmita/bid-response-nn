@@ -18,8 +18,6 @@ This curve is called the bid-response curve and is traditionally modelled using 
 
 Where *x* includes price-like variables and others potentially representing customer, product\service, channel, competition, market and other variables.
 
-<img src="https://render.githubusercontent.com/render/math?math=%5Ccolor%7Bwhite%7Dln(ConversionRate)%2F(1-ConversionRate)%20%3D%20xB">
-
 
 
 ## Purpose
