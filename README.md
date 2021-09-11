@@ -14,7 +14,7 @@ A common sales process involves customers requesting quotes for a product or ser
 
 This curve is called the bid-response curve and is traditionally modelled using a logistic regression:
 
-<img src="https://render.githubusercontent.com/render/math?math=%5Ccolor%7Bwhite%7Dln(ConversionRate)%2F(1-ConversionRate)%20%3D%20xB">
+<img src="https://render.githubusercontent.com/render/math?math=%5Ccolor%7Bwhite%7Dln(ConversionRate%2F(1-ConversionRate))%20%3D%20xB">
 
 Where *x* includes price-like variables and others potentially representing customer, product\service, channel, competition, market and other variables.
 
