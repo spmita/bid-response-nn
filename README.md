@@ -13,10 +13,10 @@ A common sales process involves customers requesting quotes for a product or ser
 ![](image-20210911223527968.png)
 
 This curve is called the bid-response curve and is traditionally modelled using a logistic regression:
-$$
-ln(ConversionRate/(1-ConversionRate)) = xB
-$$
-Where $x$ includes price-like variables and others potentially representing customer, product\service, channel, competition, market and other variables.
+
+<img src="https://render.githubusercontent.com/render/math?math=ln(ConversionRate%2F(1-ConversionRate))%20%3D%20xB">
+
+Where *x* includes price-like variables and others potentially representing customer, product\service, channel, competition, market and other variables.
 
 
 
