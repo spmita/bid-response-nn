@@ -10,7 +10,7 @@ Traditionally, econometric models are constructed to predict a volume-related me
 
 A common sales process involves customers requesting quotes for a product or service, receiving a quoted price and either buying or not buying based on that quoted price.  We define the conversion rate to be the proportion of requested quotes in which the customer decides to buy the product or service. Everything else being equal, it is expected that conversion rate decreases as quoted price increases:
 
-![image-20210911223527968](C:\Users\paul_\bid-response-nn\image-20210911223527968.png)
+![](image-20210911223527968.png)
 
 This curve is called the bid-response curve and is traditionally modelled using a logistic regression:
 $$
