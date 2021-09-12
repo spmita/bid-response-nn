@@ -16,7 +16,7 @@ This curve is called the bid-response curve and is traditionally modelled using 
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Ccolor%7Bwhite%7Dln(ConversionRate%2F(1-ConversionRate))%20%3D%20xB">
 
-Where *x* includes price-like variables and others potentially representing customer, product\service, channel, competition, market and other variables.
+where *x* includes price-like variables and others potentially representing customer, product\service, channel, competition, market and other variables.  However this econometric model would typically require considerable hand-crafting and domain expertise to obtain good performance.  On the other hand, there are many machine learning techniques that are appropriate to modelling conversion but these do not naturally output price sensitivity information.
 
 
 
@@ -24,9 +24,43 @@ Where *x* includes price-like variables and others potentially representing cust
 
 The purpose of this is to demonstrate the application of a simple neural network to the problem of measuring useful price sensitivity in a quotation sales process (as described above).  The benefits of this approach are:
 
-1. Modelling of non-linear effects without hand-crafting interactions and transformed features.  .
-2. Calculation of price sensitivities, with the same ease-of-interpretation as in a logistic regression model. 
-3. Creation of a smooth bid-response curve for each observation in the dataset, appropriate for incorporation into a price optimisation.
+1. Modelling of non-linear effects without hand-crafting interactions and transformed features based on domain expertise.
+2. Calculation of price sensitivity for each observation, with the same ease-of-interpretation as in a logistic regression model. 
+3. Creation of a smooth bid-response curve for each observation, appropriate for incorporation into a price optimisation.
 
 Benefit (1) is the natural result of using a neural network.   Benefits (2) and (3) arise from the specific design of the final layer of the network.
+
+
+
+## Approach
+
+As with a traditional econometric approach to this problem, the idea is to train a model to predict conversion based on the attributes of the quote, including the quoted price.  A simple multi-layer perceptron (MLP) is used with some specific features:
+
+1. The quoted price is not an input to the MLP
+2. The MLP has two outputs
+3. The final activation is a customised sigmoid function.  This is designed so that the two MLP outputs, &alpha; and &beta;, can be interpreted as the the level and slope parameter of the bid-response curve for that observation.
+
+![](ForwardPass02.png)
+
+
+
+## Results
+
+This approach has been tested using dummy data.  The data generation process is parameterised so that the main and interaction effects of the attributes on the conversion rate are known.  Three models are trained and then tested on a sample of the dummy data that was not used in training.
+
+| #    | Model description                                            | Example testing loss (per observation) |
+| ---- | ------------------------------------------------------------ | -------------------------------------- |
+| 1    | Neural network model, as described above                     | 0.29                                   |
+| 2    | "Complete" logistic regression model which is structured to match the equation used to generate the dummy data and which therefore correctly recovers the parameter values used in that equation.  This model represents the best possible performance. | 0.26                                   |
+| 3    | "Naïve" logistic regression model which considers only the main effect of each attribute and of price.  This model represents a reasonable worst case for performance. | 0.49                                   |
+
+These results vary depending on the number of attributes, the strength of price effects and the strength of interaction effects.  However the overall finding is that the neural network model performs nearly as well as the "complete" logistic regression model, and that is often a lot better than the naïve logistic regression model.  For a bit of fun we can define the following performance metric for the neural network, in comparison to the best and reasonabel worst cases:
+
+<img src="https://render.githubusercontent.com/render/math?math=%5Ccolor%7Bwhite%7D%3D(nn%5C_model%5C_loss%20-%20naive%5C_model%5C_loss)%20%2F%20(complete%5C_model%5C_loss%20-%20naive%5C_model%5C_loss)">
+
+This is 86% using the example losses in the table. 
+
+Given the formulation of the final activation function, the bid-response curves are smooth and can be used for price optimisation.  Here are the actual and estimated bid-response curves for a random selection of observations.
+
+![](PredActualBidResponse.png)
 
