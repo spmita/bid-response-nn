@@ -54,7 +54,7 @@ This approach has been tested using dummy data.  The data generation process is 
 | 2    | "Complete" logistic regression model which is structured to match the equation used to generate the dummy data and which therefore correctly recovers the parameter values used in that equation.  This model represents the best possible performance. | 0.26                                   |
 | 3    | "Naïve" logistic regression model which considers only the main effect of each attribute and of price.  This model represents a reasonable worst case for performance. | 0.49                                   |
 
-These results vary depending on the number of attributes, the strength of price effects and the strength of interaction effects.  However the overall finding is that the neural network model performs nearly as well as the "complete" logistic regression model, and that is often a lot better than the naïve logistic regression model.  For a bit of fun we can define the following performance metric for the neural network, in comparison to the best and reasonabel worst cases:
+These results vary depending on the number of attributes, the strength of price effects and the strength of interaction effects.  However the overall finding is that the neural network model performs nearly as well as the "complete" logistic regression model, and that is often a lot better than the naïve logistic regression model.  For a bit of fun we can define the following performance metric for the neural network, in comparison to the best and (reasonable) worst cases:
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Ccolor%7Bwhite%7D%3D(nn%5C_model%5C_loss%20-%20naive%5C_model%5C_loss)%20%2F%20(complete%5C_model%5C_loss%20-%20naive%5C_model%5C_loss)">
 
