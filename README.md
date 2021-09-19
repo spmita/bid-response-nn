@@ -60,7 +60,19 @@ These results vary depending on the number of attributes, the strength of price 
 
 This is 86% using the example losses in the table. 
 
+
+
+## Interpretability
+
 Given the formulation of the final activation function, the bid-response curves are smooth and can be used for price optimisation.  Here are the actual and estimated bid-response curves for a random selection of observations.
 
 ![](PredActualBidResponse.png)
+
+These bid response curves can be combined with an incremental profit model to determine the optimum price to quote:
+
+![](OptimiseSingleQuote01.png)
+
+Applying that calculation of a large number of quotes reveals sensible patterns, such as the positive association between the price elasticity at the quoted price and the change to the quoted price required to reach the optimum price:
+
+![](PriceChangeVsElasticity01.png)
 
