@@ -76,3 +76,15 @@ Applying that calculation of a large number of quotes reveals sensible patterns,
 
 ![](PriceChangeVsElasticity01.png)
 
+
+
+## Uncertainty in bid-response and optimum prices
+
+It is often important to understand the confidence in a recommended price.  The MLP mentioned above has been adapted to a Bayesian MLP in which we aim to learn the distributions of the weights and biases, rather than their 'best' point estimates.  Samples drawn from the trained model are used to assess the uncertainty in the estimated bid-response.  Here are some randomly selected examples in which the shaded region is the 90% confidence interval on the bid-response curve.
+
+![](PredActualBidResponseBayes.png)
+
+More practically for price optimisation, the same sampling process can be applied to the optimum prices.  Here is an example for a single quote where we are 90% confident that the optimum price lies between the two vertical dashed lines.
+
+![](OptimiseSingleQuoteBayes.png)
+
